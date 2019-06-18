@@ -1,4 +1,4 @@
-baseURL = "https://underkube-blog.netlify.com/"
+baseURL = "https://www.underkube.com/"
 languageCode = "en-us"
 title = "Underkube"
 theme = "zozo"
