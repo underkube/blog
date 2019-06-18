@@ -1,7 +1,8 @@
 ---
 title: "OCP4 tips & tricks"
 date: 2019-06-18T16:42:20+02:00
-draft: true
+draft: false
+tags: ["ocp4", "tips"]
 ---
 
 This post will be updated to reflect some OCP4 tips & tricks:

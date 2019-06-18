@@ -1,7 +1,8 @@
 ---
 title: "Firewalld tips & tricks"
 date: 2019-06-18T17:19:08+02:00
-draft: true
+draft: false
+tags: ["firewalld", "tips"]
 ---
 
 # Show all rules

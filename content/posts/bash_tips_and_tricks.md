@@ -1,7 +1,8 @@
 ---
 title: "Bash tips & tricks"
 date: 2019-06-18T17:19:14+02:00
-draft: true
+draft: false
+tags: ["bash", "tips"]
 ---
 
 # Bash variable with the content of a file
