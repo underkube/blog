@@ -1,0 +1,41 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Underkube"
+theme = "zozo"
+summaryLength = 100
+paginate = 4
+enableEmoji = true
+
+[author]
+  name = "Eduardo Minguez"
+
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Posts"
+  weight = 20
+  identifier = "archive"
+  url = "/posts/"
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+[[menu.main]]
+  name = "About"
+  weight = 40
+  identifier = "about"
+  url = "/about/"
+
+[params]
+  subTitle = "Tips, tricks and all things k8s/OpenShift"
+  footerSlogan = "What is under kubernetes?"
+  keywords = ["kubernetes", "openshift", "containers"]
+  description = "@minWi thoughts about k8s/OpenShift"
+
+[social]
+  github = "e-minguez"
+  twitter = "minwi"
