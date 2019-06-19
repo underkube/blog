@@ -1,7 +1,13 @@
 baseURL = "https://www.underkube.com/"
 title = "Underkube"
 theme = "terminal"
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
 paginate = 5
+languageCode = "en-us"
+enableEmoji = true
+staticDir1 = "static"
 
 [params]
   contentTypeName = "post"
@@ -25,20 +31,24 @@ paginate = 5
       logoHomeLink = "/"
 
     [languages.en.menu]
+
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About me"
         url = "/page/about"
+        weight = 10
 
       [[languages.en.menu.main]]
         identifier = "posts"
         name = "Posts"
         url = "/post"
+        weight = 20
 
       [[languages.en.menu.main]]
 	      identifier = "rss"
         name = "RSS"
         url = "/post/index.xml"
+        weight = 30
 
       [[languages.en.menu.main]]
         identifier = "tag1"
