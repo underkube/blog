@@ -1,15 +1,51 @@
 baseURL = "https://www.underkube.com/"
-languageCode = "en-us"
 title = "Underkube"
-theme = "basics"
-
-[permalinks]
-  post = "/:year/:month/:title/"
+theme = "terminal"
+paginate = 5
 
 [params]
-  author = "Eduardo Minguez"
-  subTitle = "Tips, tricks and all things k8s/OpenShift"
-  description = "@minWi thoughts about k8s/OpenShift"
-  gitlab = "minWi"
-  github = "e-minguez"
-  twitter = "minwi"
+  contentTypeName = "post"
+  themeColor = "blue"
+  showMenuItems = 3
+  fullWidthTheme = false
+  centerTheme = true
+
+[languages]
+  [languages.en]
+    title = "Underkube"
+    subtitle = "Tips, tricks and all things k8s/OpenShift/containers/etc"
+    keywords = ""
+    copyright = "CC-BY-SA 4.0"
+    menuMore = "Tags"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "Underkube"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About me"
+        url = "/page/about"
+
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/post"
+
+      [[languages.en.menu.main]]
+	      identifier = "rss"
+        name = "RSS"
+        url = "/post/index.xml"
+
+      [[languages.en.menu.main]]
+        identifier = "tag1"
+        name = "OpenShift"
+        url = "/tags/openshift"
+
+     [[languages.en.menu.main]]
+        identifier = "tag2"
+        name = "Kubernetes"
+        url = "/tags/kubernetes"
