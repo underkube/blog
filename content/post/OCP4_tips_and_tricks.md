@@ -168,7 +168,7 @@ metadata:
 spec:
   config:
     ignition:
-      config: {}
+    config: {}
       security:
         tls: {}
       timeouts: {}
