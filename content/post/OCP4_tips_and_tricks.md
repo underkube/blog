@@ -241,3 +241,15 @@ A handy one liner to see the pods having issues (such as CrashLoopBackOff):
 ```
 oc get pods --all-namespaces | grep -v -E 'Completed|Running'
 ```
+
+# Debug node issues
+
+OCP 4.1 is based on RHCOS and it is encouraged to not ssh into the hosts.
+Instead:
+
+```
+oc debug node/<node>
+...
+chroot /host
+cat /etc/redhat-release 
+```
