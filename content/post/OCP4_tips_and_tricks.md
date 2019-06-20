@@ -251,5 +251,11 @@ Instead:
 oc debug node/<node>
 ...
 chroot /host
-cat /etc/redhat-release 
+cat /etc/redhat-release
+```
+
+# Patch image pull policy
+
+```
+oc patch dc mydeployment -p '{"spec":{"template":{"spec":{"containers":[{"imagePullPolicy":"IfNotPresent","name":"mydeployment"}]}}}}'
 ```
