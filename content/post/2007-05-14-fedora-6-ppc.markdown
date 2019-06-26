@@ -1,0 +1,21 @@
+---
+author: minwi
+date: 2007-05-14 22:05:36+00:00
+draft: false
+title: Fedora 6 PPC
+type: post
+url: /2007/05/15/fedora-6-ppc/
+categories:
+- Fedora
+- Linux
+---
+
+Dentro de unos dias (el 24 de Mayo creo recordar), sale la nueva versión de [Fedora](http://www.redhat.es/fedora/).
+¿Qué es Fedora? Bueno, si te lo preguntas, mal empezamos... es una distribución de Linux, la antigua Red Hat, pero en su vertiente "comunitaria" (osea, Red Hat mantenida por la comunidad, o una Red Hat "a la" Debian).
+¿Por qué Fedora? Es la distro que usamos en el curro, y quiero acostumbrarme un poco a su manejo.
+La versión que tengo instalada es la 6, con vistas a actualizar a la 7 en cuanto salga.
+Es una buena distro de linux (aunque le falta algo... el feeling de debian es dificil de encontrar en otras), pero la noto algo "lenta" (tengo un iBook G4), y que le falta soft (bueno, de eso pecan todas las distros ppc) culpa de los fabricantes (maldito flash!!!)
+La instalación es sencilla (un instalador grafico basado en gtk bastante chulo), particiones, selección de soft, blablabla... yum, el instalador de software... bueno... no es apt :S
+Otra pega es que no instala ni soporte mp3, ni codecs, ni plugins ni nada de nada... pero bueno, [google](http://www.google.es) is my friend :)
+No se que más comentar... cuando salga Fedora 7 hare una review un poco detallada.
+Nota: 7

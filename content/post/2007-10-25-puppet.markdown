@@ -1,0 +1,16 @@
+---
+author: minwi
+date: 2007-10-25 09:22:50+00:00
+draft: false
+title: Puppet
+type: post
+url: /2007/10/25/puppet/
+categories:
+- Linux
+- sysadmin
+---
+
+En el mundillo de los "sysadmin", se lleva mucho el scripteo para automatizar tareas. Sin embargo, puede ser un autentico coñazo hacer scripts desde 0 para todo.
+Ahi es donde entra [puppet](https://puppet.reductivelabs.com/), que segun sus creadores ([reductivelabs](http://reductivelabs.com/index.html)), es:
+_A system administrative engine for your whole network. Puppet lets you perform normal administrative tasks (such as adding users, installing packages, and updating server configurations) on any number of systems, even if those systems are running completely different operating systems._
+Es un poco complicado, pero muy util y muy potente. También hay que decir que es un desarrollo poco maduro (en el momento de escribir este post, van por la version 0.23.2), pero tiene muy buena pinta ;)

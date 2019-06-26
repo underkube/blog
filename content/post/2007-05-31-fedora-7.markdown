@@ -1,0 +1,17 @@
+---
+author: minwi
+date: 2007-05-31 16:54:09+00:00
+draft: false
+title: Fedora 7
+type: post
+url: /2007/05/31/fedora-7/
+categories:
+- Fedora
+- Linux
+---
+
+Ale, ya salió :D
+Como novedades novedosas... desaparece extras y core y se "fusionan". Desaparece el "core" del nombre de la distribución, y han cambiado el artwork.
+Aparte, cuenta con las ultimas versiones de gnome,kernel,...blablabla :D
+Más info [Release notes](http://http://docs.fedoraproject.org/release-notes/f7/en_US/) y [pagina oficial](http://fedoraproject.org/)
+Yo ya me la estoy bajando... y tu?

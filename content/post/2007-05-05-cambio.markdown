@@ -1,0 +1,16 @@
+---
+author: minwi
+date: 2007-05-05 20:16:30+00:00
+draft: false
+title: Cambio
+type: post
+url: /2007/05/05/cambio/
+categories:
+- Personal
+---
+
+Pues si, el lunes empieza una etapa nueva en mi vida.
+Cambio de curro, de ciudad,...
+Dejo de ser un [teleoperador](http://www.qualytel.com) de [Orange](http://www.orange.es) en Salamanca, para irme de sysadmin a una empresa en Madrid.
+Se que voy a echar de menos muchas cosas, mucha gente (a [una](http://www.fotolog.com/isum/) algo más que al resto), pero es algo que no podia dejar pasar...
+PD.- Para el que busque algo "interesante", lamento decirle que esta entrada es personal, y como es mi blog y pongo lo que quiera, pues toma post ñoño del mes :)

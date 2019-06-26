@@ -1,0 +1,14 @@
+---
+author: minwi
+date: 2007-08-18 14:27:18+00:00
+draft: false
+title: Emesene
+type: post
+url: /2007/08/18/emesene/
+categories:
+- Linux
+---
+
+Una alternativa a amsn y a pidgin: [Emesene](http://www.emesene.org/trac/wiki)
+Ligero, bonito y con las "pijadas" de msn (aka mensajes personalizados, avatares, nudges,...). Además es gtk (gnome, xfce)
+Ah!, el paquete .deb de la web de getdeb, funciona en debian sid ppc (normal, es python...)

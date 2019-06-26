@@ -1,0 +1,17 @@
+---
+author: minwi
+date: 2007-05-30 08:25:18+00:00
+draft: false
+title: IDS
+type: post
+url: /2007/05/30/ids/
+categories:
+- IDS
+- Linux
+---
+
+Llevo un par de semanas trabajando en unos informes para implantar un IDS. De momento he mirado por encima HIDS, y he llegado a la conclusión de que el mejor es [samhain](http://la-samhna.de/samhain/).
+Es descentralizado, cifrado, firmado, se ejecuta como daemon,...
+La verdad es que tiene todo.
+Lo unico achacable es que es dificil de instalar, configurar,... pero vamos, para eso estamos los sysadmins :P
+Ah por cierto!, tambien eche un vistazo a [Tripwire](http://sourceforge.net/projects/tripwire/), pero ni punto de comparación :)
