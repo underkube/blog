@@ -259,3 +259,9 @@ cat /etc/redhat-release
 ```
 oc patch dc mydeployment -p '{"spec":{"template":{"spec":{"containers":[{"imagePullPolicy":"IfNotPresent","name":"mydeployment"}]}}}}'
 ```
+
+# Sign all the pending `csr`
+
+```
+oc get csr -o name | xargs oc adm certificate approve
+```

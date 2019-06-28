@@ -1,61 +1,65 @@
 baseURL = "https://www.underkube.com/"
 title = "Underkube"
-theme = "terminal"
-contentdir = "content"
-layoutdir = "layouts"
-publishdir = "public"
-paginate = 5
+theme = "cactus-plus"
+hasCJKLanguage = false
 languageCode = "en-us"
-enableEmoji = true
-staticDir1 = "static"
+#googleAnalytics = "your_google_analytics_id"
 
 [params]
-  contentTypeName = "post"
-  themeColor = "blue"
-  showMenuItems = 3
-  fullWidthTheme = false
-  centerTheme = true
+  description = "Tips, tricks and all things k8s/OpenShift/containers/etc"
+  author = "Eduardo Mínguez"
+  twitter = "minWi"
+  enableRSS = true
+	enableToc = true
+  enableDisqus = false
+  enableSummary = false
+  # Set the value to true if use description in post front matter replace content summary
+	useDescriptionReplaceSummary = false
 
-[languages]
-  [languages.en]
-    title = "Underkube"
-    subtitle = "Tips, tricks and all things k8s/OpenShift/containers/etc"
-    keywords = ""
-    copyright = "CC-BY-SA 4.0"
-    menuMore = "Tags"
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
+	enableGoogleAnalytics = false
+	enableBaiduAnalytics = false
 
-    [languages.en.params.logo]
-      logoText = "Underkube"
-      logoHomeLink = "/"
+  enableTwitterCard = true
+  # The url for twitter card image, default is avatar.png in static/images directory
+  twitterCardImage = ""
 
-    [languages.en.menu]
+  # Add custom assets with their paths relative to the static folder
+  customCSS = []
+  customJS  = []
 
-      [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About me"
-        url = "/page/about"
-        weight = 10
+  # The variables below are optionally too and can be used to
+  # translate or customize each string of the theme.
 
-      [[languages.en.menu.main]]
-        identifier = "posts"
-        name = "Posts"
-        url = "/post"
-        weight = 20
+  # Navigation links
+  home = ""
+  about = ""
+  archive = "All Posts"
+  subscribe = ""
 
-      [[languages.en.menu.main]]
-	      identifier = "rss"
-        name = "RSS"
-        url = "/post/index.xml"
-        weight = 30
+  olderPosts = ""
+  newerPosts = ""
+  copyright = ""
 
-      [[languages.en.menu.main]]
-        identifier = "tag1"
-        name = "OpenShift"
-        url = "/tags/openshift"
+  # show latest posts in single page
+  showLatestPosts = false
+  readMore = ""
 
-     [[languages.en.menu.main]]
-        identifier = "tag2"
-        name = "Kubernetes"
-        url = "/tags/kubernetes"
+  # Share
+  enableShare = true
+  tweet = ""
+  share = ""
+
+  # 404 page
+  title404 = ""
+  subtitle404 = ""
+
+  # Choose a font for the social icons in the footer. Either "mono-social" or "font-awesome"
+  iconFont = "font-awesome"
+  # The social icons can be styled differently if you use mono as font - circle, rounded, or empty
+  socialIconStyle = ""
+
+
+  # Add additional social link entries underneath
+  [social]
+  twitter-square = "https://www.twitter.com/minwi"
+  github-square = "https://www.github.com/e-minguez"
