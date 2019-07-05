@@ -277,3 +277,17 @@ Or:
 ```
 oc exec -n openshift-sdn $(oc get pods -n openshift-sdn -l app=sdn --no-headers=true -o custom-columns=:metadata.name|head -n1) cat /config/{kube-proxy-config,sdn-config}.yaml
 ```
+
+# Run debugging tools in the RHCOS hosts
+
+```
+oc debug node/<node>
+chroot /host
+podman run -it --name rhel-tools --privileged                       \
+      --ipc=host --net=host --pid=host -e HOST=/host                \
+      -e NAME=rhel-tools -e IMAGE=rhel7/rhel-tools                  \
+      -v /run:/run -v /var/log:/var/log                             \
+      -v /etc/localtime:/etc/localtime -v /:/host rhel7/rhel-tools
+```
+
+This will allow you to run `tcpdump` and other tools. Use it with caution!!!
