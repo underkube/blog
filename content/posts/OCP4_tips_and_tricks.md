@@ -291,3 +291,28 @@ podman run -it --name rhel-tools --privileged                       \
 ```
 
 This will allow you to run `tcpdump` and other tools. Use it with caution!!!
+
+# Create objects using bash `here documents`
+
+This is just an example of a `LoadBalancer` service, but it can be anything
+yaml based!:
+
+```
+cat <<EOF | oc apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-openshift-lb
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-openshift
+  sessionAffinity: None
+  type: LoadBalancer
+EOF
+```
