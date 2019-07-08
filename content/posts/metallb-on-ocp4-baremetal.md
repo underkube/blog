@@ -4,6 +4,12 @@ date: 2019-07-05T17:19:14+02:00
 draft: false
 tags: ["openshift", "kubernetes", "metallb"]
 ---
+
+UPDATE: I submitted a [PR](https://github.com/danderson/metallb/pull/447) to the MetalLB docs on how to deploy MetalLB on OpenShift 4 and it has been merged \o/ so hopefully it will be live soon.
+
+ORIGINAL BLOG POST:
+--8<--
+
 This blog post illustrates my steps to deploy [metallb](https://metallb.universe.tf/) on [OCP4](https://www.redhat.com/en/openshift-4) running
 on baremetal.
 
