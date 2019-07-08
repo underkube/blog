@@ -290,6 +290,13 @@ podman run -it --name rhel-tools --privileged                       \
       -v /etc/localtime:/etc/localtime -v /:/host rhel7/rhel-tools
 ```
 
+or you can specify the image used for the debug pod as:
+
+```
+oc debug node/<node> --image=rhel7/rhel-tools
+chroot /host
+```
+
 This will allow you to run `tcpdump` and other tools. Use it with caution!!!
 
 # Create objects using bash `here documents`
