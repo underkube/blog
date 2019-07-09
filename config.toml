@@ -3,7 +3,7 @@ title = "Underkube"
 theme = "cactus-plus"
 hasCJKLanguage = false
 languageCode = "en-us"
-#googleAnalytics = "your_google_analytics_id"
+googleAnalytics = "UA-143530243-1"
 
 [params]
   description = "Tips, tricks and all things k8s/OpenShift/containers/etc"
@@ -16,7 +16,7 @@ languageCode = "en-us"
   # Set the value to true if use description in post front matter replace content summary
 	useDescriptionReplaceSummary = false
 
-	enableGoogleAnalytics = false
+	enableGoogleAnalytics = true
 	enableBaiduAnalytics = false
 
   enableTwitterCard = true
