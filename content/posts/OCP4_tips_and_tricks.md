@@ -336,3 +336,11 @@ paused by setting the `spec.paused` field in the `machineconfigpool` to true:
 ```
 oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/master
 ```
+
+# Wait for a machine-config to be applied
+
+The `machineconfigpool` condition will be `updated` so we can wait for it as:
+
+```
+oc wait mcp/master --for condition=updated
+```
