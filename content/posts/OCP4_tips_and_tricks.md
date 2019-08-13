@@ -360,3 +360,53 @@ oc edit secret -n openshift-config pull-secret
 NOTE: That secret is translated by the machine-config operator into the
 `/var/lib/kubelet/config.json` file so in order to update it is required for the
 hosts to be rebooted (which is done automatically by the mc operator)
+
+# Get tags from a particular image in a particular container image registry
+
+In order to get images from Red Hat's registries, it is required to have a
+pull secret that contains base64 encoded tokens to reach those registries, such
+as:
+
+```
+'{
+   "auths":{
+      "quay.io":{
+         "auth":"xxx",
+         "email":"xxx"
+      },
+      "registry.redhat.io":{
+         "auth":"xxx",
+         "email":"xxx"
+      },
+      "registry.example.com":{
+         "auth":"xxx",
+         "email":"xxx"
+      },
+   }
+}'
+```
+
+First step is to get the token. We do this with this handy one liner:
+
+```
+REGISTRY=registry.example.com
+echo $PULL_SECRET | jq -r ".auths.\"${REGISTRY}\".auth" | base64 -d | cut -d: -f2
+```
+
+Or, store it in an environment variable:
+
+```
+TOKEN=$(echo $PULL_SECRET | jq -r ".auths.\"${REGISTRY}\".auth" | base64 -d | cut -d: -f2)
+```
+
+Then we can use regular container image registry API queries:
+
+```
+curl -s -H  "Authorization: Bearer ${TOKEN}" https://${REGISTRY}/v2/_catalog
+```
+
+So, one liner to get the list of available tags for a particular image:
+
+```
+curl -s -H  "Authorization: Bearer $(echo $PULL_SECRET | jq -r '.auths."registry.example.com".auth' | base64 -d | cut -d: -f2)" https://registry.example.com/v2/eminguez/myawesomecontainer/tags/list | jq -r '.tags | .[]' | sort
+```
