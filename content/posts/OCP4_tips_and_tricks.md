@@ -441,3 +441,13 @@ spec:
         path: /etc/sysctl.d/99-elasticsearch.conf
 EOF
 ```
+
+# Extract the OpenShift payloads (aka files, assets, etc.)
+
+You just need your pull secret file and:
+
+```
+oc adm release extract --registry-config=./pull_secret.txt --from=quay.io/openshift-release-dev/ocp-release:4.1.15 --to=/tmp/mystuff
+```
+
+You can extract individual files such as the `oc` or the installer with the ``--command` flag
