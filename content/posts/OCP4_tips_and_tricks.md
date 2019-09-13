@@ -450,4 +450,10 @@ You just need your pull secret file and:
 oc adm release extract --registry-config=./pull_secret.txt --from=quay.io/openshift-release-dev/ocp-release:4.1.15 --to=/tmp/mystuff
 ```
 
-You can extract individual files such as the `oc` or the installer with the ``--command` flag
+You can extract individual files such as the `oc` or the installer with the `--command` flag
+
+# Get default StorageClass name
+
+```
+oc get sc -o jsonpath='{.items[?(@.metadata.annotations.storageclass\.kubernetes\.io/is-default-class=="true")].metadata.name}'
+```
