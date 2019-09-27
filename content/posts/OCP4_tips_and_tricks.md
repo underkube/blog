@@ -411,6 +411,16 @@ So, one liner to get the list of available tags for a particular image:
 curl -s -H  "Authorization: Bearer $(echo $PULL_SECRET | jq -r '.auths."registry.example.com".auth' | base64 -d | cut -d: -f2)" https://registry.example.com/v2/eminguez/myawesomecontainer/tags/list | jq -r '.tags | .[]' | sort
 ```
 
+# Get tags from a particular image in quay.io registry
+
+If the images are public (like openshift/origin-installer), it is as simple as:
+
+```
+curl -X GET "https://quay.io/api/v1/repository/openshift/origin-installer/tag/" | jq -r .tags[].name | sort | uniq
+```
+
+Please note that [quay.io API](https://docs.quay.io/api/swagger/) is slightly different
+
 # Apply sysctl tweaks to nodes
 
 In order to modify sysctl parameters is recommended to create `machine configs`
