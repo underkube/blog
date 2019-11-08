@@ -1,5 +1,5 @@
 ---
-title: "Xiaomi Mijia Ble Sensor MQTT on Containers"
+title: "Xiaomi Mijia Ble Sensor MQTT on containers"
 date: 2019-11-08T12:35:12+01:00
 draft: false
 ---
