@@ -195,7 +195,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: hello-openshift
+    deploymentconfig: hello-openshift
   sessionAffinity: None
   type: LoadBalancer
 EOF
@@ -227,7 +227,7 @@ Namespace:                my-test-app
 Labels:                   <none>
 Annotations:              kubectl.kubernetes.io/last-applied-configuration:
                             {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"hello-openshift-lb","namespace":"my-test-app"},"spec":{"externalT...
-Selector:                 app=hello-openshift
+Selector:                 deploymentconfig=hello-openshift
 Type:                     LoadBalancer
 IP:                       172.30.250.196
 LoadBalancer Ingress:     10.19.140.10
