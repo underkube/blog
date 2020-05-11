@@ -1,6 +1,6 @@
 ---
 title: "Simulate ONTAP ® 9.6 on KVM + Trident 20.04 on OCP4"
-date: 2020-05-11T17:19:14+02:00
+date: 2020-05-11T15:19:14+02:00
 draft: false
 tags: ["openshift", "kubernetes", "storage", "netapp"]
 ---
@@ -17,45 +17,46 @@ to play with.
 NOTE: The Simulator is not publicly available and you can only access to it if you are a customer
 or partner. It is required for you to have a proper NFS license.
 
-See the references section for more information about the VM sizes, process, etc.
+See the [references](#references) section for more information about the VM sizes, process, etc.
 
 ## Prerequisites
 
 * A fully functional OCP4 environment
 * A RHEL host with libvirt + KVM powerful enough to deploy the simulator (5 GB RAM, 2 vCPUS and some disk)
-* The Simulator OVA
+* The cluster requires to reach the simulator VM somehow. In this case, we use a `mybridge` bridge in the hypervisor reachable from within the OCP4 pods
+* The Simulator OVA and licenses
 
 ## Steps
 
-* Copy the ova file to /var/lib/libvirt/images/ in the host to be used to run the emulator
+* Copy the ova file to `/var/lib/libvirt/images/` in the host to be used to run the emulator
 * cd into that folder
 * untar the ova file
 
-```
+```shell
 $ tar -xvf vsim-netapp-DOT9.6-cm_nodar.ova
 ```
 
 * Convert the vmdk files to qcow2
 
-```
+```shell
 $ for i in {1..4}; do qemu-img convert -f vmdk -O qcow2 vsim-netapp-DOT9.6-cm-disk${i}.vmdk vsim-netapp-DOT9.6-cm-disk${i}.qcow2; done
 ```
 
 * [Optional] remove the old assets
 
-```
+```shell
 $ rm -f vsim-netapp-DOT9.6-cm{.ovf,.mf,_nodar.ova,-disk?.vmdk}
 ```
 
 * Restore the proper selinux context just in case
 
-```
+```shell
 $ restorecon -Rv vsim-netapp-DOT9.6-cm-disk?.qcow2
 ```
 
 * Create an isolated network xml file:
 
-```
+```shell
 $ cat << 'EOF' > /tmp/isolated-network.xml
 <network>
   <name>isolated</name>
@@ -71,7 +72,7 @@ EOF
 
 * Create that network
 
-```
+```shell
 $ virsh net-define /tmp/isolated-network.xml
 $ virsh net-start isolated
 $ virsh net-autostart isolated
@@ -79,7 +80,7 @@ $ virsh net-autostart isolated
 
 * Create the VM xml definition. Double check disks routes, networks, etc. The first two interfaces are unused (hence, conected to the isolated network we created previously) but the third and fourth are added to a bridge called 'mybridge' for them to be reachables from within the cluster:
 
-```
+```xml
 <domain type='kvm' id='1'>
   <name>ONTAP</name>
   <uuid>531228b6-2bfe-42c3-a00c-3a73b2a2fc25</uuid>
@@ -282,29 +283,33 @@ NOTE: The `machinetype` give me a headache. `/usr/libexec/qemu-kvm -machine help
 
 * Create the VM
 
-```
+```shell
 $ virsh define ontap.xml
 ```
 
 * Connect to the hypervisor somehow to see the VM console before running it. In my case, I've used the ability of virt-manager to connect to a remote hypervisor.
 
 * Power the VM on and be prepared to press Ctrl+C when it asks you to do so
+
 ![Wizard First step](/images/netapp/step1.png)
 
 * Once in the boot menu select option 4 to wipe drives and configuration
+
 ![Wizard Second step](/images/netapp/step2.png)
 
 * Once confirmed the Netapp simulator will reboot the virtual machine.  Then it will go about wiping configuration and drives.  Once complete it will present the create a cluster wizard:
+
 ![Wizard Third step](/images/netapp/step3.png)
 
-At this point the wizard will be used to configure the new Netapp filer. In this case, the baremetal network has the 172.22.0.10,172.22.0.100 dhcp range, so we are going to use an IP from outside that reservation for the e0c interface (the management one):
+At this point the wizard will be used to configure the new Netapp filer. In this case, the network has the 172.22.0.10,172.22.0.100 dhcp range, so we are going to use an IP from outside that reservation for the e0c interface (the management one):
+
 ![Wizard Fourth step](/images/netapp/step4.png)
 
 * The wizard asks you for an admin password (>8 characters length), cluster name and a license key
 * It also asks you to configure the e0a interface, so I've used 172.22.0.102 there
 * Then the VM is ready to be used (I guess) and you can connect via ssh
 
-```
+```shell
 $ ssh admin@172.22.0.101
 Password:
 
@@ -314,7 +319,7 @@ examplefiler01::>
 
 * Optional: To connect to the filer from my workstation, I've used sshuttle as:
 
-```
+```shell
 $ sshuttle -r myhost 172.22.0.0/24
 ...
 $ ssh admin@172.22.0.101
@@ -327,13 +332,18 @@ $ ssh admin@172.22.0.101
 ```
 examplefiler01::> run local
 Type 'exit' or 'Ctrl-D' to return to the CLI
+
 examplefiler01-01> snap delete -a -f vol0
 Deleted vol0 snapshot hourly.0.
+
 examplefiler01-01> snap sched vol0 0 0 0
+
 examplefiler01-01> snap autodelete vol0 on
 snap autodelete: snap autodelete enabled
+
 examplefiler01-01> snap autodelete vol0 target_free_space 35
 snap autodelete: snap autodelete configuration options set
+
 examplefiler01-01> snap autodelete vol0
 snapshot autodelete settings for vol0:
 state                : on
@@ -548,6 +558,7 @@ e2evserver
 ```
 examplefiler01::> vserver export-policy rule create -vserver e2evserver -policyname default -ruleindex 1 -protocol nfs -clientmatch 0.0.0.0/0 -rorule any -rwrule any -superuser any
 Enable the NFS service by adding the license
+
 examplefiler01::> system license add XXX
 License for package "NFS" and serial number "xxx" installed successfully.
 (1 of 1 added successfully)
@@ -565,7 +576,7 @@ It seems we have everything in place.
 
 * Run some prechecks
 
-```
+```shell
 $ oc auth can-i '*' '*' --all-namespaces
 yes
 $ oc new-project test-netapp
@@ -587,7 +598,7 @@ NOTE: There are also some FeatureGates that seem to be enabled… as I'm not int
 
 * Download the installation tarball
 
-```
+```shell
 $ wget https://github.com/NetApp/trident/releases/download/v20.04.0/trident-installer-20.04.0.tar.gz
 $ tar -xf trident-installer-20.04.0.tar.gz
 $ cd trident-installer
@@ -595,7 +606,7 @@ $ cd trident-installer
 
 * Generate the installation yaml files (just in case you want to observe something)
 
-```
+```shell
 $ ./tridentctl install --generate-custom-yaml -n trident
 INFO Created setup directory.                      path=/home/kni/trident-installer/setup
 INFO Wrote installation YAML files.                setupPath=/home/kni/trident-installer/setup
@@ -603,7 +614,7 @@ INFO Wrote installation YAML files.                setupPath=/home/kni/trident-i
 
 * Deploy it
 
-```
+```shell
 $ ./tridentctl install -d -n trident --use-custom-yaml
 DEBU Initialized logging.                          logLevel=debug
 DEBU Trident image: netapp/trident:20.04.0        
@@ -613,7 +624,7 @@ DEBU Running outside a pod, creating CLI-based client.
 
 After a while, the installation will finish successfully:
 
-```
+```shell
 ...
 INFO Trident REST interface is up.                 version=20.04.0
 INFO Trident installation succeeded.
@@ -637,7 +648,7 @@ $ ./tridentctl -n trident version
 Now it is time to connect the trident pieces with the emulator. In order to do that, a backend in trident jargon is needed.
 We will use the minimal one as per the documentation here
 
-```
+```json
 {
     "version": 1,
     "storageDriverName": "ontap-nas",
@@ -652,7 +663,7 @@ We will use the minimal one as per the documentation here
 
 * Create it
 
-```
+```shell
 $ ./tridentctl create b -f setup/backend.json -n trident
 +-----------------------+----------------+--------------------------------------+--------+---------+
 |         NAME          | STORAGE DRIVER |                 UUID                 | STATE  | VOLUMES |
@@ -663,7 +674,7 @@ $ ./tridentctl create b -f setup/backend.json -n trident
 
 * Create a storage class with the previous data (storage driver mainly)
 
-```
+```shell
 $ cat <<EOF | oc apply -f -
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -709,7 +720,7 @@ volumeBindingMode: Immediate
 
 * Let's test if this works or not:
 
-```
+```shell
 $ oc project test || oc new-project test
 
 $ oc apply -f sample-input/pvc-basic.yaml
