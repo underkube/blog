@@ -5,7 +5,7 @@ draft: false
 tags: ["openshift", "kubernetes", "storage", "netapp"]
 ---
 
-# Introduction
+## Introduction
 
 NetApp filers can be used to provide dynamic storage to OCP4/k8s using
 [NetApp's Trident storage orchestrator](https://github.com/NetApp/trident/).
