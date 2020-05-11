@@ -19,6 +19,8 @@ or partner. It is required for you to have a proper NFS license.
 
 See the [references](#references) section for more information about the VM sizes, process, etc.
 
+**This is just for demos/poc purposes, do not use it in production**!!!
+
 ## Prerequisites
 
 * A fully functional OCP4 environment
