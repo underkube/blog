@@ -299,11 +299,11 @@ $ virsh define ontap.xml
 
 ![Wizard Second step](/images/netapp/step2.png)
 
-* Once confirmed the Netapp simulator will reboot the virtual machine.  Then it will go about wiping configuration and drives.  Once complete it will present the create a cluster wizard:
+* Once confirmed the NetApp simulator will reboot the virtual machine.  Then it will go about wiping configuration and drives.  Once complete it will present the create a cluster wizard:
 
 ![Wizard Third step](/images/netapp/step3.png)
 
-At this point the wizard will be used to configure the new Netapp filer. In this case, the network has the 172.22.0.10,172.22.0.100 dhcp range, so we are going to use an IP from outside that reservation for the e0c interface (the management one):
+At this point the wizard will be used to configure the new NetApp filer. In this case, the network has the 172.22.0.10,172.22.0.100 dhcp range, so we are going to use an IP from outside that reservation for the e0c interface (the management one):
 
 ![Wizard Fourth step](/images/netapp/step4.png)
 
