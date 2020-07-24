@@ -1,7 +1,8 @@
 ---
 title: "Podman rootless containers in RHEL7"
-date: 2020-07-24T14:26:20+01:00
+date: 2020-07-24T12:26:20+01:00
 draft: false
+tags: ["containers", "podman", "rhel7"]
 ---
 
 Quick howto to make podman rootless containers work in RHEL7:
