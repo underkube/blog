@@ -46,6 +46,7 @@ Some details:
 cat << 'EOF' > /your/file
 ...
 EOF
+```
 
 * In a shell script with tabs such as:
 
