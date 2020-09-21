@@ -6,19 +6,19 @@ tags: ["gnome", "argos", "displays"]
 ---
 
 I wanted to easily switch between my regular desktop configuration:
-![standard](/images/gnome-display-argos/00-standard.jpg)
+![standard](/images/gnome-displays-argos/00-standard.jpg)
 
 All the external displays:
-![externals](/images/gnome-display-argos/01-externals.jpg)
+![externals](/images/gnome-displays-argos/01-externals.jpg)
 
 To a single external display:
-![single-external](/images/gnome-display-argos/02-external-horizontal.jpg)
+![single-external](/images/gnome-displays-argos/02-external-horizontal.jpg)
 
 Or just the laptop screen:
-![laptop](/images/gnome-display-argos/03-laptop.jpg)
+![laptop](/images/gnome-displays-argos/03-laptop.jpg)
 
 This usually required to open `gnome-control-center`, then click displays, etc.
-![gnome-control-center](/images/gnome-display-argos/gnome-control-center.png)
+![gnome-control-center](/images/gnome-displays-argos/gnome-control-center.png)
 
 So I thought it would be nice to look for a extension in the
 [Gnome Extensions](https://extensions.gnome.org) site... but I couldn't find
@@ -65,7 +65,7 @@ manage displays using xorg while
 [arandr](https://christian.amsuess.com/tools/arandr/) is a nice GUI tool to
 create `xrandr` "scripts" easily:
 
-![arandr screenshot](/images/gnome-display-argos/arandr.png)
+![arandr screenshot](/images/gnome-displays-argos/arandr.png)
 
 Basically it generates `sh` scripts such as `~/.screenlayout/00-standard.sh`:
 
@@ -106,6 +106,6 @@ done
 
 Which looks like:
 
-![argos screenshot](/images/gnome-display-argos/argos-screenshot.png)
+![argos screenshot](/images/gnome-displays-argos/argos-screenshot.png)
 
 Nice!!!
