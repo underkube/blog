@@ -26,10 +26,10 @@ any that worked as I wanted... so let's try to do our own method! :)
 
 ## Argos
 
-Just in case you don't know [https://github.com/p-e-w/argos](Argos), it is a
+Just in case you never heard of [Argos](https://github.com/p-e-w/argos), it is a
 Gnome 'metaextension' where you can create your own extensions based on scripts,
 commands, etc. It is inspired by, and fully compatible with, the 
-[https://github.com/matryer/bitbar](BitBar) app for OSX.
+[BitBar](https://github.com/matryer/bitbar) app for OSX.
 
 In order to install it, you just need to go to its
 [the Gnome Extensions](https://extensions.gnome.org/extension/1176/argos/) page
