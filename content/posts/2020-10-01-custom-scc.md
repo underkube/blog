@@ -7,8 +7,8 @@ tags: ["openshift", "scc", "permissions", "rbac"]
 
 # SCCs
 
-There are a ton of information out there about SCCs, but in this post we will be
-focused only on how to create and use a custom SCC.
+There are tons of information out there about SCCs, but in this post we will be
+focused on how to create and use a custom SCC only.
 
 See the OpenShift official documentation on [Managing Security Context Constraints](https://docs.openshift.com/container-platform/4.5/authentication/managing-security-context-constraints.html) for more details.
 
@@ -271,8 +271,8 @@ The SCCs have a `priority` field to affect the ordering. This means:
 * If priorities are equal, the SCCs will be sorted from most restrictive to least restrictive
 * If both priorities and restrictions are equal the SCCs will be sorted by name
 
-See 
-[https://github.com/openshift/apiserver-library-go/blob/master/pkg/securitycontextconstraints/sccadmission/admission.go](the admission controller code)
+See [the admission controller code]
+(https://github.com/openshift/apiserver-library-go/blob/master/pkg/securitycontextconstraints/sccadmission/admission.go)
 if you are brave enough to understand it :)
 
 The out-of-the-box SCCs included in OpenShift 4 and their priorities are:
@@ -365,10 +365,16 @@ oauth-openshift-5c4466d8f6-hrrkf   1/1     Running            0          3d4h
 oc get po -n openshift-authentication -o jsonpath='{range .items[*]}{.metadata.annotations.openshift\.io/scc}{"\t"}{.metadata.name}{"\t"}{.metadata.namespace}{"\n"}{end}'
 anyuid	oauth-openshift-5c4466d8f6-djg89	openshift-authentication
 anyuid	oauth-openshift-5c4466d8f6-hrrkf	openshift-authentication
+
+oc get deploy -n openshift-authentication oauth-openshift -o jsonpath='{.spec.template.spec.serviceAccountName}'
+oauth-openshift
+
+oc adm policy who-can use scc mycustomscc | grep oauth-openshift
+        system:serviceaccount:openshift-authentication:oauth-openshift
 ```
 
 They are using the `anyuid` SCC, but they can use any... and based on the order,
-mycustomscc will win:
+`mycustomscc` will win:
 
 ```bash
 oc get scc -o custom-columns=NAME:.metadata.name,PRIORITY:.priority
@@ -399,8 +405,8 @@ anyuid	oauth-openshift-5c4466d8f6-djg89	openshift-authentication
 mycustomscc	oauth-openshift-5c4466d8f6-wq7cv	openshift-authentication
 ```
 
-Ooops, we just broke our cluster... the admission controller has chosen the
-`mycustomscc` SCC instead the `anyuid` one and now the pod is not able to run. 
+Ooops, we just broke our cluster... the admission controller choose the
+`mycustomscc` SCC instead the `anyuid` one and now the pod is not able to run.
 Let's fix it by lowering the priority of our custom SCC:
 
 ```bash
