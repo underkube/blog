@@ -63,3 +63,6 @@ googleAnalytics = "UA-143530243-1"
   [social]
   twitter-square = "https://www.twitter.com/minwi"
   github-square = "https://www.github.com/e-minguez"
+
+[permalinks]
+"/" = ":slug/"
