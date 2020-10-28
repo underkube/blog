@@ -203,17 +203,17 @@ complicated but it is not. Let's do it with just a single command:
 oc whoami
 system:admin
 
-oc adm policy add-scc-to-user mycustomscc -z myserviceaccount -n myproject
+oc create role mycustomsccrole --verb=use --resource=scc --resource-name=mycustomscc -n myproject
 ```
 
-This will create a
-`clusterrole.rbac.authorization.k8s.io/system:openshift:scc:mycustomscc` object:
+This will create a role such as:
 
 ```bash
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
-  name: system:openshift:scc:mycustomscc
+  name: mycustomsccrole
+  namespace: myproject
 rules:
 - apiGroups:
   - security.openshift.io
@@ -225,24 +225,13 @@ rules:
   - use
 ```
 
-And a rolebinding in our namespace:
+And we need to give access to that role to the serviceaccount (meaning, creating a rolebinding):
 
 ```bash
-oc get rolebinding system:openshift:scc:mycustomscc -o yaml -n myproject
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: system:openshift:scc:mycustomscc
-  namespace: myproject
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: system:openshift:scc:mycustomscc
-subjects:
-- kind: ServiceAccount
-  name: myserviceaccount
-  namespace: myproject
+oc adm policy add-role-to-user mycustomsccrole -z myserviceaccount
 ```
+
+This will create a rolebinding to link the service account to the role.
 
 To verify:
 
