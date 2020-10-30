@@ -268,8 +268,8 @@ mycustomscc
 
 Nice!
 
-NOTE: In recent versions of OCP (tested in 4.6), the `oc adm policy add-scc-to-user` command
-creates a cluster role:
+NOTE: In recent versions of OCP (since https://github.com/openshift/oc/pull/412
+was merged), the `oc adm policy add-scc-to-user` command creates a cluster role:
 
 ```bash
 oc adm policy add-scc-to-user mycustomscc system:serviceaccount:myproject:myserviceaccount
