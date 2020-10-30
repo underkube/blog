@@ -225,13 +225,33 @@ rules:
   - use
 ```
 
+Note: You can create the role using the yaml file instead the `oc create role` command.
+
 And we need to give access to that role to the serviceaccount (meaning, creating a rolebinding):
 
 ```bash
-oc adm policy add-role-to-user mycustomsccrole -z myserviceaccount
+oc adm policy add-role-to-user mycustomsccrole -z myserviceaccount --role-namespace=myproject
 ```
 
-This will create a rolebinding to link the service account to the role.
+This will create a rolebinding to link the service account to the role:
+
+```bash
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mycustomsccrole
+  namespace: myproject
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: mycustomsccrole
+subjects:
+- kind: ServiceAccount
+  name: myserviceaccount
+  namespace: testscc
+```
+
+Note: You can create the rolebinding using the yaml file instead the `oc adm policy add-role-to-user` command.
 
 To verify:
 
@@ -247,6 +267,48 @@ mycustomscc
 ```
 
 Nice!
+
+NOTE: In recent versions of OCP (tested in 4.6), the `oc adm policy add-scc-to-user` command
+creates a cluster role:
+
+```bash
+oc adm policy add-scc-to-user mycustomscc system:serviceaccount:myproject:myserviceaccount
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:mycustomscc added: "myserviceaccount"
+
+oc get clusterrole system:openshift:scc:mycustomscc -o yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: system:openshift:scc:mycustomscc
+rules:
+- apiGroups:
+  - security.openshift.io
+  resourceNames:
+  - mycustomscc
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+```
+
+And a `clusterrolebinding` to link that clusterrole with the service account:
+
+```bash
+oc get clusterrolebinding system:openshift:scc:mycustomscc -o yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: system:openshift:scc:mycustomscc
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:mycustomscc
+subjects:
+- kind: ServiceAccount
+  name: myserviceaccount
+  namespace: myproject
+```
 
 ## Priorities
 
