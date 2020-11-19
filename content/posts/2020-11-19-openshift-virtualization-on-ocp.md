@@ -131,12 +131,12 @@ EOF
 Connect to the new VM:
 
 ```bash
-virtctl console -n my-first-vm testvm
+virtctl console -n my-first-vm my-first-vm
 
-Successfully connected to testvm console. The escape sequence is ^]
+Successfully connected to my-test-vm console. The escape sequence is ^]
 
 login as 'cirros' user. default password: 'gocubsgo'. use 'sudo' for root.
-testvm login: cirros
+my-test-vm login: cirros
 Password: gocubsgo
 $ cat /etc/cirros/version
 0.4.0
