@@ -1,6 +1,6 @@
 ---
 title: "Deploying Inspektor Gadget on OCP 4.6.1"
-date: 2020-12-03T11:30:00+00:00
+date: 2020-12-03T8:30:00+00:00
 draft: false
 tags: ["openshift", "inspektor-gadget", "debug", "crc", "capabilities"]
 ---
@@ -39,6 +39,8 @@ In the meantime, I opened a
 [Github issue](https://github.com/kinvolk/inspektor-gadget/issues/145) to notify
 the Kinvolk folks about this so in the future it can be deployed without any
 forks.
+
+NOTE: Obviously this is totally unsupported.
 
 ## OCP Requirements
 
@@ -197,3 +199,11 @@ Running command: exec /opt/bcck8s/bcc-wrapper.sh --tracerid 20201123115948-c2009
 ### References
 
 * https://github.com/clustership/inspektor-gadget/blob/master/openshift/README.md
+
+### Notes
+
+Yes, I've tried to resist the temptation to put an Inspector gadget image in the
+post to make it look more professional... but I guess nobody reads it until
+completion, so here it is! :D
+
+![Inspector Gadget](https://pixy.org/src/441/thumbs350/4411156.jpg)
