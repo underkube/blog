@@ -1,5 +1,5 @@
 ---
-title: "Deploying Inspektor Gadget on OCP 4.6.1"
+title: "Deploy Inspektor Gadget on OCP 4.6.1"
 date: 2020-12-03T8:30:00+00:00
 draft: false
 tags: ["openshift", "inspektor-gadget", "debug", "crc", "capabilities"]
