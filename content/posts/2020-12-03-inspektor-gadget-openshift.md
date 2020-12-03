@@ -196,11 +196,11 @@ Terminating...
 Running command: exec /opt/bcck8s/bcc-wrapper.sh --tracerid 20201123115948-c2009dae9253 --stop
 ```
 
-### References
+## References
 
 * https://github.com/clustership/inspektor-gadget/blob/master/openshift/README.md
 
-### Notes
+## Notes
 
 Yes, I've tried to resist the temptation to put an Inspector gadget image in the
 post to make it look more professional... but I guess nobody reads it until
