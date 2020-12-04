@@ -81,7 +81,7 @@ cool right?
 oc apply -f https://raw.githubusercontent.com/clustership/inspektor-gadget/master/openshift/deployment.yaml
 ```
 
-NOTE: There is a bug currently where the daemonset can fail with sigsev.
+NOTE: There is a bug currently where the daemonset can fail with sigsegv.
 In that case, delete the daemonset and redeploy it again:
 
 ```bash
