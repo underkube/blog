@@ -11,13 +11,13 @@ the installation, such as applying bonding configurations or vlan settings via
 machine configs... but what if you need those changes at installation time?
 
 In my case, I have an OpenShift environment composed by physical servers where
-each of those have 4 NICs. 1 unplugged NIC, 1 NIC connected to the provisioning
+each of them have 4 NICs. 1 unplugged NIC, 1 NIC connected to the provisioning
 network and 2 NICs connected to the same switch and to the same baremetal
 subnet. This is used to configure a bonding interface composed of those two
 NICs, but I wanted to use just a single NIC or switch to bonding without
 modifying the switches' configuration... so to me, one NIC is the 'good one'
 and it has a dhcp reservation and a DNS hostname already configured.
-As RHCOS requests a dhcpaddress on all NICs, I ended up with two different IPs
+As RHCOS requests a dhcp address on all NICs, I ended up with two different IPs
 for the baremetal subnet. This means that depending on which NIC gets the IP
 first (guess which one wins all the time), the hostname is either the proper one
 or one assigned via dhcp as well as the primary IP... which turns out bad for
@@ -28,14 +28,14 @@ Let's start with the basics, disabling `ens3f1` at day 2.
 ## Day 2
 
 The easiest way [I've found](https://unix.stackexchange.com/a/467085) is
-basically creaing a `machine-config` to disable the NIC at all, using some
+basically creating a `machine-config` to disable the NIC completely, using some
 udev magic:
 
 ```bash
 ACTION=="add", SUBSYSTEM=="net", ENV{INTERFACE}=="ens3f1", RUN+="/bin/sh -c 'echo 1 > /sys$DEVPATH/device/remove'"
 ```
 
-The avid reader would ask... Why udev instead just disabling it via
+The avid reader would ask... Why udev instead of just disabling it via
 NetworkManager? Because I wanted to test Contrail and the operator requires to
 [disable NetworkManager](https://raw.githubusercontent.com/Juniper/contrail-operator/R2011/deploy/openshift/openshift/99_master_network_manager_stop_service.yaml) :)
 
@@ -136,7 +136,7 @@ that disables dhcp requests on a particular interface. In this case:
 ip=ens3f1:off
 ```
 
-The RHCOS iso already have a mechansims enabled to override parameters at boot
+The RHCOS iso already has a mechansim enabled to override parameters at boot
 via [this commit](https://github.com/coreos/ignition/commit/a65ec1667338518a44c75a21ceb955408c3061da).
 
 As the commit mentions, the content of the `/boot/ignition.firstboot` file will
