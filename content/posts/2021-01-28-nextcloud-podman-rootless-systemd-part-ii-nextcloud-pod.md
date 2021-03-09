@@ -194,9 +194,5 @@ start using!!!
 
 ## Next post
 
-In the next post I will explain how to expose your Nextcloud instance using
-[bunkerized-nginx](https://github.com/bunkerity/bunkerized-nginx) and how to
-create proper systemd unit files to be able to treat the pods and containers as
-services.
-
-Stay tuned!
+In the next post I will explain how I managed to fix some issues I found while
+using Nextcloud and NFS.
