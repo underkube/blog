@@ -167,6 +167,40 @@ systemctl --user restart container-bunkerized-nginx
 Otherwise, you will need to modify the systemd unit file, run the daemon-reload
 command and restart the service.
 
+## Exposing it to the internet
+
+As explained in the first post, I'm hosting all this stuff at home so I've
+configured my router, running OpenWRT, to expose only the reverse proxy ports
+externally (NAT) like so:
+
+```bash
+config redirect
+  option dest_port '8000'
+  option src 'wan'
+  option name '80'
+  option src_dport '80'
+  option target 'DNAT'
+  option dest_ip '192.168.1.98'
+  option dest 'lan'
+  list proto 'tcp'
+
+config redirect
+  option dest_port '8443'
+  option src 'wan'
+  option src_dport '443'
+  option target 'DNAT'
+  option dest_ip '192.168.1.98'
+  option dest 'lan'
+  list proto 'tcp'
+  option name '443'
+```
+
+This means, that the requests incoming from the internet accessing
+`http://my-ip` will be redirected to the bunkerized-nginx container listening in
+port 8000, and requests accessing `https://my-ip` will be redirected to the
+bunkerized-nginx container listening in port 8443... and then, depending on the
+`Host` header, they will be redirected to the proper application container.
+
 ## Next post
 
 In the next and last post of this series, I will explain how I run the Nextcloud
