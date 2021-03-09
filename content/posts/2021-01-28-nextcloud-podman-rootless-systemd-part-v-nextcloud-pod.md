@@ -1,6 +1,6 @@
 ---
 title: "Nextcloud with podman rootless containers and user systemd services. Part V - Running Nextcloud as a pod with play kube"
-date: 2021-03-09T8:30:00+00:00
+date: 2021-01-28T8:30:00+00:00
 draft: false
 tags: ["nextcloud", "podman", "rootless", "systemd", "pod"]
 ---
