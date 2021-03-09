@@ -62,7 +62,8 @@ Those will be used as
 There are TONS of parameters supported by bunkerized-nginx. Some parameters can
 disable some features, some others enable others, etc. so grab a coffee and 
 take a good look at the
-[https://github.com/bunkerity/bunkerized-nginx/blob/master/README.md](README.md)
+[README.md](https://github.com/bunkerity/bunkerized-nginx/blob/master/README.md)
+file.
 
 In my case:
 
@@ -137,7 +138,8 @@ WantedBy=default.target
 Notice that I didn't use `podman generate systemd` because it is very specific
 to the container ID and I wanted more flexibility. You can read more about
 this in this great
-[https://www.redhat.com/sysadmin/podman-shareable-systemd-services](Running containers with Podman and shareable systemd services) blog post.
+[Running containers with Podman and shareable systemd services](https://www.redhat.com/sysadmin/podman-shareable-systemd-services)
+blog post.
 
 Then, enable the service:
 

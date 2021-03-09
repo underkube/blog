@@ -13,7 +13,8 @@ it can do so much more!
 The feature I'm talking about is being able to run Kubernetes YAML pod
 definitions! How cool is that?
 
-You can read more about this feature in the [https://github.com/containers/podman/blob/master/docs/source/markdown/podman-play-kube.1.md](podman-play-kube) man, but essentially, you just need a proper pod yaml
+You can read more about this feature in the
+[podman-play-kube](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-play-kube.1.md) man, but essentially, you just need a proper pod yaml
 definition and `podman play kube /path/to/my/pod.yaml` will run it for you.
 
 You can even specify a path to a `ConfigMap` yaml file that contains
@@ -24,7 +25,7 @@ environmental variables so you can split the config and runtime settings. COOL!
 To create a Kubernetes YAML pod definition based on a container or a pod, you
 can use `podman generate kube` and it will generate it for you, there is no need
 to deal with the complex YAML syntax. See the manual page for 
-[https://github.com/containers/podman/blob/master/docs/source/markdown/podman-generate-kube.1.md](podman-generate-kube)
+[podman-generate-kube](https://github.com/containers/podman/blob/master/docs/source/markdown/podman-generate-kube.1.md)
 to learn more about it.
 
 In my case, this is how it looks like:
