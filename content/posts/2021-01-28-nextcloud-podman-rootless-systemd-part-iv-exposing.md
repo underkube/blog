@@ -1,5 +1,5 @@
 ---
-title: "Nextcloud with podman rootless containers and user systemd services. Part IV - Exposing it to internet"
+title: "Nextcloud with podman rootless containers and user systemd services. Part IV - Exposing Nextcloud externally"
 date: 2021-03-09T8:30:00+00:00
 draft: false
 tags: ["nextcloud", "podman", "rootless", "systemd", "bunkerized-nginx"]
@@ -169,3 +169,6 @@ command and restart the service.
 
 In the next and last post of this series, I will explain how I run the Nextcloud
 pod with systemd as a Kubernetes pod and how I update it.
+
+You can read it
+[here](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-v-nextcloud-pod/)

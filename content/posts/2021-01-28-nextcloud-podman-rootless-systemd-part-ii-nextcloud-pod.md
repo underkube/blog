@@ -196,3 +196,6 @@ start using!!!
 
 In the next post I will explain how I managed to fix some issues I found while
 using Nextcloud and NFS.
+
+You can read it
+[here](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-iii-nfs-gotchas/)

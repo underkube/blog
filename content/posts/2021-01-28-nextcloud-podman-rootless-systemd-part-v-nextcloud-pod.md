@@ -267,4 +267,12 @@ a few minutes to read them.
 If you have any question or improvement, you can reach me at
 [@minWi](https://twitter.com/minWi)
 
+The links to the other posts are:
+
+* [I - Introduction](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-i-introduction/)
+* [II - Nextcloud Pod](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-ii-nextcloud-pod/)
+* [III - NFS gotchas](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-iii-nfs-gotchas/)
+* [IV - Exposing Nextcloud externally](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-iv-exposing/)
+* [V - Running Nextcloud as a pod with play kube](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-v-nextcloud-pod/)
+
 Thanks!!!

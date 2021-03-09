@@ -213,3 +213,6 @@ able to run VMs using my colleague Karim's [kcli](https://github.com/karmab/kcli
 
 In the next post I will try to explain the process of 'installing' Nextcloud as
 a pod.
+
+You can read it
+[here](https://www.underkube.com/posts/2021-01-28-nextcloud-podman-rootless-systemd-part-ii-nextcloud-pod/)
