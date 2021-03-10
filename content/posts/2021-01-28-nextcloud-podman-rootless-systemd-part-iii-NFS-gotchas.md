@@ -48,6 +48,13 @@ shopt +s dotglob
 I did used `shopt -s dotglob` for chown to also change the user/group for the
 _hidden_ folders (the ones where the name starts with a dot, such as `~/.ssh`)
 
+Then in the NFS client, the following line was added to the `/etc/fstab` so the
+share is available at boot:
+
+```bash
+192.168.1.99:/tank/nextcloud/html /home/edu/containers/nextcloud/data/html nfs rw,relatime,user 0 0
+```
+
 ## Tweaks
 
 With everything in place it should work... but it didn't.
