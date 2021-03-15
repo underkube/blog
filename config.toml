@@ -1,6 +1,6 @@
 baseURL = "https://www.underkube.com/"
 title = "Underkube"
-theme = "cactus-plus"
+theme = "mini"
 hasCJKLanguage = false
 languageCode = "en-us"
 googleAnalytics = "UA-143530243-1"
@@ -11,6 +11,7 @@ googleAnalytics = "UA-143530243-1"
   twitter = "minWi"
   enableRSS = true
 	enableToc = true
+  enableComments = true
   enableDisqus = false
   enableSummary = false
   # Set the value to true if use description in post front matter replace content summary
@@ -61,8 +62,8 @@ googleAnalytics = "UA-143530243-1"
 
   # Add additional social link entries underneath
   [social]
-  twitter-square = "https://www.twitter.com/minwi"
-  github-square = "https://www.github.com/e-minguez"
+  twitter = "https://www.twitter.com/minwi"
+  github = "https://www.github.com/e-minguez"
 
 [permalinks]
 "/" = ":slug/"
