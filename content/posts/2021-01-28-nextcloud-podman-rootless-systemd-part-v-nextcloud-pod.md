@@ -147,10 +147,6 @@ spec:
       name: home-edu-containers-nextcloud-data-html
     workingDir: /var/www/html
   - name: nginx
-    command:
-    - nginx
-    - -g
-    - daemon off;
     image: docker.io/library/nginx:alpine
     resources: {}
     securityContext:
