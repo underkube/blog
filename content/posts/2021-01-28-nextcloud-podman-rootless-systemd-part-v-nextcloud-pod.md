@@ -70,8 +70,6 @@ spec:
       name: home-edu-containers-nextcloud-data-db
     workingDir: /
   - name: app
-    command:
-    - php-fpm
     env:
     - name: REDIS_HOST_PASSWORD
       value: xxx
