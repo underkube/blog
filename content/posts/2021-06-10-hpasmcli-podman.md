@@ -3,6 +3,7 @@ title: "Running hpasmcli commands on a container using podman"
 date: 2021-06-10T8:30:00+00:00
 draft: false
 tags: ["baremetal", "podman", "hardware"]
+description: "Running hpasmcli commands on a contianer using podman"
 ---
 
 To be able to monitor hardware health, status and information on HP servers
