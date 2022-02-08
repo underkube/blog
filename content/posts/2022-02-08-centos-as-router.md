@@ -1,9 +1,9 @@
 ---
-title: "Howto configure a CentOS 8 Stream host as a router"
+title: "Howto configure a CentOS 8 Stream host as a network router and provide dhcp and dns services"
 date: 2022-02-08T8:30:00+00:00
 draft: false
 tags: ["centos8", "dnsmasq"]
-description: "Howto configure a CentOS 8 Stream host as a router"
+description: "Howto configure a CentOS 8 Stream host as a network router and provide dhcp and dns services"
 ---
 
 I wanted to configure a VM to act as a router between two networks, providing DHCP and DNS services as well.
@@ -85,7 +85,7 @@ EOF
 sysctl -w net.ipv4.ip_forward=1
 ```
 
-* Configure DNSMASQ
+* Configure dnsmasq
 
 ```
 envsubst <<"EOF" > /etc/dnsmasq.conf
@@ -102,11 +102,23 @@ expand-hosts
 domain=minwi.com
 dhcp-authoritative
 dhcp-leasefile=/var/lib/dnsmasq/dnsmasq.leases
+dhcp-option=option:ntp-server,192.168.0.4,10.10.0.5
 EOF
 
 echo "172.22.0.1 dhcprouter.minwi.com" >> /etc/hosts
 
 systemctl enable --now dnsmasq
+```
+
+* (Optional) If you want to have `aws` hostname style (`ip-A-B-C-D.domain`), you can use the following dirty script:
+
+```
+IPBLOCK=172.22.0.
+DOMAIN="minwi.com"
+for i in {100..200}; do
+  echo "${IPBLOCK}${i} ip-$(echo ${IPBLOCK} | sed 's/\./-/g')${i}.${DOMAIN}" >> /etc/hosts
+done
+systemctl restart dnsmasq
 ```
 
 Profit!
