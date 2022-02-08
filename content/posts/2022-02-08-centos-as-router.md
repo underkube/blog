@@ -63,9 +63,12 @@ systemctl enable --now firewalld
 ```
 export EXT_IF=eth0
 export INT_IF=eth1
-firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 -o ${EXT_IF} -j MASQUERADE
-firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ${INT_IF} -o ${EXT_IF} -j ACCEPT
-firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 -i ${EXT_IF} -o ${INT_IF} -m state --state RELATED,ESTABLISHED -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 nat POSTROUTING 0 \
+  -o ${EXT_IF} -j MASQUERADE
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 \
+  -i ${INT_IF} -o ${EXT_IF} -j ACCEPT
+firewall-cmd --permanent --direct --add-rule ipv4 filter FORWARD 0 \
+  -i ${EXT_IF} -o ${INT_IF} -m state --state RELATED,ESTABLISHED -j ACCEPT
 firewall-cmd --permanent --add-service dhcp --add-service dns
 firewall-cmd --permanent --add-masquerade
 firewall-cmd --reload
