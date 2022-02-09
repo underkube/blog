@@ -103,6 +103,8 @@ domain=minwi.com
 dhcp-authoritative
 dhcp-leasefile=/var/lib/dnsmasq/dnsmasq.leases
 dhcp-option=option:ntp-server,192.168.0.4,10.10.0.5
+# Include all files in /etc/dnsmasq.d except RPM backup files
+conf-dir=/etc/dnsmasq.d,.rpmnew,.rpmsave,.rpmorig
 EOF
 
 echo "172.22.0.1 dhcprouter.minwi.com" >> /etc/hosts
