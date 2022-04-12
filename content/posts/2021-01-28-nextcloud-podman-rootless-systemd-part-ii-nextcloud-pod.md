@@ -105,7 +105,7 @@ podman run \
 
 ### Nginx
 
-I've copied the ['official'](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb-cron-redis/fpm/web/nginx.conf) `nginx.conf` to the proper location:
+I've copied the ['official'](https://github.com/nextcloud/docker/blob/master/.examples/docker-compose/with-nginx-proxy/mariadb/fpm/web/nginx.conf) `nginx.conf` to the proper location:
 
 ```bash
 curl -o ~/containers/nextcloud/nginx/nginx.conf https://raw.githubusercontent.com/nextcloud/docker/master/.examples/docker-compose/with-nginx-proxy/mariadb-cron-redis/fpm/web/nginx.conf 
