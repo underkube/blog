@@ -5,7 +5,7 @@ date: 1984-01-14
 
 # What is this?
 
-Welcome fellow reader. This is yet another try to force myself ([Eduardo Minguez](https://www.eduardominguez.es)) to write stuff in the shape of a blog.
+Welcome fellow reader. This is yet another try to force myself ([Eduardo Minguez](https://eduardominguez.es)) to write stuff in the shape of a blog.
 
 
 I've been trying to keep internal notes with tips and tricks, so I've decided
