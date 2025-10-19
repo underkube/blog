@@ -75,3 +75,6 @@ I've asked Gemini to help me redacting and formatting the content by the way :) 
 * [**IANA Example Domains**](https://www.iana.org/help/example-domains): A link to the official IANA page listing reserved domain names (like `example.com`), specifically for documentation and examples—a must-know for developers.
 
 * [**The Filesystem Hierarchy Standard (FHS) 3.0**](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html): A crucial reference for understanding the directory structure of Linux and Unix-like operating systems.
+
+
+See you next week (hopefully!)
