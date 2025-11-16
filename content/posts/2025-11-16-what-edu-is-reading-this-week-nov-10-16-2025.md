@@ -8,7 +8,7 @@ description: A list of links I found interesting this week (Nov 10 - 16, 2025)
 
 ## What Edu is Reading This Week
 
-Fourth week in a row!
+Fifth week in a row!
 
 ---
 
