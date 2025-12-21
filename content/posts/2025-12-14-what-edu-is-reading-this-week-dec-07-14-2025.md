@@ -1,6 +1,6 @@
 ---
 title: "What Edu is reading this week (Dec 8 - 14, 2025)"
-date: 2025-12-14T09:00:00+01:00
+date: 2025-12-14T07:00:00+01:00
 draft: false
 categories:
 - Reading
